@@ -7,7 +7,7 @@
 **     Version     : Component 01.105, Driver 01.40, CPU db: 3.00.000
 **     Datasheet   : MC9S08PA4RM Rev. 0 Draft B, 10/2011
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2015-03-04, 23:41, # CodeGen: 6
+**     Date/Time   : 2015-03-16, 23:52, # CodeGen: 15
 **     Abstract    :
 **         This component "MC9S08PA4_16" contains initialization 
 **         of the CPU and provides basic methods and events for 
@@ -180,8 +180,8 @@ void _EntryPoint(void)
   /* WDOG_TOVAL: TOVAL=0x30 */
   setReg16(WDOG_TOVAL, 0x30U);          
   /* Common initialization of the write once registers */
-  /* SYS_SOPT1: FTM0PS=0,BKGDPE=1,RSTPE=1,FWAKE=0,STOPE=0 */
-  clrSetReg8Bits(SYS_SOPT1, 0x23U, 0x0CU); 
+  /* SYS_SOPT1: FTM0PS=0,BKGDPE=1,RSTPE=0,FWAKE=0,STOPE=0 */
+  clrSetReg8Bits(SYS_SOPT1, 0x27U, 0x08U); 
   /* PMC_SPMSC1: LVWIE=0,LVDRE=1,LVDSE=1,LVDE=1,BGBDS=0,BGBE=1 */
   clrSetReg8Bits(PMC_SPMSC1, 0x22U, 0x1DU); 
   /* PMC_SPMSC2: LVDV=0,LVWV=0 */
@@ -222,8 +222,8 @@ void PE_low_level_init(void)
   #ifdef PEX_RTOS_INIT
     PEX_RTOS_INIT();                   /* Initialization of the selected RTOS. Macro is defined by the RTOS component. */
   #endif
-  /* SCG_C1: ??=0,FTM1=1,FTM0=1,??=0,??=0,??=0,??=0,RTC=1 */
-  setReg8(SCG_C1, 0x61U);               
+  /* SCG_C1: ??=0,FTM1=1,FTM0=1,??=0,??=0,??=0,??=0,RTC=0 */
+  setReg8(SCG_C1, 0x60U);               
   /* SCG_C2: ??=0,??=0,DBG=1,NVM=1,IPC=1,??=0,??=0,??=0 */
   setReg8(SCG_C2, 0x38U);               
   /* SCG_C3: ??=0,??=0,??=0,SCI0=1,??=0,??=0,??=0,??=0 */
@@ -272,6 +272,12 @@ void PE_low_level_init(void)
   /* IPC_SC: IPCE=1,??=0,PSE=0,PSF=0,PULIPM=0,??=0,IPM=0 */
   setReg8(IPC_SC, 0x80U);               
       /* Initialization of the PORT module */
+  /* PORT_FCLKDIV: FLTDIV3=0,FLTDIV2=0,FLTDIV1=0 */
+  setReg8(PORT_FCLKDIV, 0x00U);         
+  /* PORT_IOFLT0: FLTC=0,FLTB=0,FLTA=0 */
+  clrReg8Bits(PORT_IOFLT0, 0x3FU);      
+  /* PORT_IOFLT2: FLTKBI0=0,FLTRST=0 */
+  clrReg8Bits(PORT_IOFLT2, 0x0FU);      
   /* ### Shared modules init code ... */
   /* ###  "AD1" init code ... */
   AD1_Init();
@@ -298,6 +304,8 @@ void PE_low_level_init(void)
 
 /*lint -save  -e950 Disable MISRA rule (1.1) checking. */
 /* Initialization of the CPU registers in FLASH */
+/* NV_FPROT: FPOPEN=0,??=1,FPHDIS=1,FPHS=3,??=1,??=1,??=1 */
+static const uint8_t NV_FPROT_INIT @0x0000FF7CU = 0x7FU;
 /* NV_FSEC: KEYEN=1,??=1,??=1,??=1,??=1,SEC=2 */
 static const uint8_t NV_FSEC_INIT @0x0000FF7FU = 0x7EU;
 /*lint -restore Enable MISRA rule (1.1) checking. */

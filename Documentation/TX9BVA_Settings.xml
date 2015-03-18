@@ -59,8 +59,9 @@
         </list>
         <list name="Shared FLASH settings" v="1">
           <group name="FLASH">
-            <enumgroup name="Protection state" v="Not initialized">
-              <EmptySection_DummyValue />
+            <enumgroup name="Protection state" v="Initialized">
+              <Regions_functionality v="Unprotected" />
+              <High_address_range_region v="Disabled" />
             </enumgroup>
             <enumgroup name="Security state" v="Disabled">
               <EmptySection_DummyValue />
@@ -77,14 +78,23 @@
         <group name="I/O module">
           <list name="Shared port settings" v="1">
             <group name="PORT module">
-              <boolgroup name="Port filters" v="Disabled" />
+              <boolgroup name="Port filters" v="Enabled">
+                <Filter_1 v="BUSCLK/2" />
+                <Filter_2 v="BUSCLK/32" />
+                <Filter_3 v="LPOCLK" />
+                <PTA_input_filter v="Bus clock" />
+                <PTB_input_filter v="Bus clock" />
+                <PTC_input_filter v="Bus clock" />
+                <RESET_IRQ_input_filter v="Bus clock" />
+                <KBI0_input_filter v="Bus clock" />
+              </boolgroup>
               <boolgroup name="Hi drive control" v="Disabled" />
             </group>
           </list>
         </group>
         <list name="SharedClockGatingGrp" v="1">
           <group name="System Clock Gating">
-            <RTC_Clock_Gate v="Enabled" />
+            <RTC_Clock_Gate v="Disabled" />
             <FTM0_Clock_Gate v="Enabled" />
             <FTM1_Clock_Gate v="Enabled" />
             <IPC_Clock_Gate v="Enabled" />
@@ -110,9 +120,7 @@
           <EmptySection_DummyValue />
         </list>
         <list name="Shared Reset pin setting" v="1">
-          <boolgroup name="Reset pin support" v="Enabled">
-            <Reset_pin v="PTA5_FTM1CH0_IRQ_RESET" />
-          </boolgroup>
+          <boolgroup name="Reset pin support" v="Disabled" />
         </list>
       </group>
       <list name="Shared Cpu interrupts" v="1">
@@ -207,7 +215,7 @@ return;
       <Memory_model v="Small" />
       <boolgroup name="Generate PRM file" v="yes">
         <enumgroup name="Stack specification" v="size">
-          <Stack_size v="96" />
+          <Stack_size v="128" />
         </enumgroup>
         <Set_memory_areas_default v="Click to set default &amp;gt;" />
         <list name="ROM/RAM Areas" v="5">

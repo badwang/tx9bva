@@ -110,9 +110,7 @@
           <EmptySection_DummyValue />
         </list>
         <list name="Shared Reset pin setting" v="1">
-          <boolgroup name="Reset pin support" v="Enabled">
-            <Reset_pin v="PTA5_FTM1CH0_IRQ_RESET" />
-          </boolgroup>
+          <boolgroup name="Reset pin support" v="Disabled" />
         </list>
       </group>
       <list name="Shared Cpu interrupts" v="1">
@@ -293,8 +291,8 @@ return;
       <EnableIntChanTrigger v="don&amp;apos;t generate code" />
       <GetValue v="don&amp;apos;t generate code" />
       <GetChanValue v="don&amp;apos;t generate code" />
-      <GetValue8 v="generate code" />
-      <GetChanValue8 v="don&amp;apos;t generate code" />
+      <GetValue8 v="don&amp;apos;t generate code" />
+      <GetChanValue8 v="generate code" />
       <GetValue16 v="don&amp;apos;t generate code" />
       <GetChanValue16 v="don&amp;apos;t generate code" />
       <EnableAsynchroClock v="don&amp;apos;t generate code" />

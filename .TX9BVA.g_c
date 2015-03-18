@@ -75,7 +75,7 @@
     </GenFiles>
     <SignalListFile>Documentation\TX9BVA_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>MetrowerksHCS08CC</DestinationCompiler>
-    <ProjectModificationStamp>9</ProjectModificationStamp>
+    <ProjectModificationStamp>13</ProjectModificationStamp>
   </Options>
   <CpuID_9>
     <Generated>true</Generated>
@@ -84,7 +84,7 @@
     <GenDriverVersion>01.40</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
     <HeaderAge>1181003204</HeaderAge>
-    <CodeAge>1181007155</CodeAge>
+    <CodeAge>1181793942</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>16</GenNumMethods>
     <SetHighSpeed>false</SetHighSpeed>

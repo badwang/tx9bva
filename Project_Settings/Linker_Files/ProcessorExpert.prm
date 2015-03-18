@@ -5,7 +5,7 @@
 **     Project   : TX9BVA
 **     Processor : MC9S08PA4VTG
 **     Compiler  : CodeWarrior HCS08 C Compiler
-**     Date/Time : 2015-03-04, 21:27, # CodeGen: 0
+**     Date/Time : 2015-03-16, 23:52, # CodeGen: 15
 **     Abstract  :
 **        This file is used by the linker. It describes files to be linked,
 **        memory ranges, stack size, etc. For detailed description of the PRM file
@@ -69,5 +69,5 @@ END
 
 INIT _EntryPoint                       /* The entry point of the application. This function is generated into the CPU module. */
 
-STACKSIZE 0x0060                       /* Size of the system stack. Value can be changed on the "Build options" tab */
+STACKSIZE 0x0080                       /* Size of the system stack. Value can be changed on the "Build options" tab */
 

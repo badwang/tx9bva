@@ -57,18 +57,18 @@ byte Levers_Tmp[10]={0};
 byte Levers_Tmp_Ptr=0;
 
 #define DAY_MODE_DUTY_CYCLE_LEVER 150					//Output duty cycle for levers day mode
-#define NIGHT_MODE_DUTY_CYCLE_BACKLIGHT 100				//Output duty cycle for backlight night mode
+#define NIGHT_MODE_DUTY_CYCLE_BACKLIGHT 30				//Output duty cycle for backlight night mode
 #define NIGHT_MODE_DUTY_CYCLE_LEVER 30					//Output duty cycle for levers night mode
 #define DARK_MODE_DUTY_CYCLE 1							//Output duty cycle for dark mode
 
 #define INPUT_V_MIN 95									//Pre-define the A/D result for when input voltage = 8V 
 
 //Defines input & output bits pattern for levers.
-#define IN_P 0b00000100
-#define IN_R 0b00000110
-#define IN_N 0b00000111
-#define IN_D 0b00000011
-#define IN_M 0b00000001
+#define IN_P 0b00000100				//4
+#define IN_R 0b00000110				//6
+#define IN_N 0b00000111				//7
+#define IN_D 0b00000011				//3
+#define IN_M 0b00000001				//1
 
 #define LeverP 0b10000
 #define LeverR 0b01000
@@ -95,7 +95,7 @@ void main(void)
 	  
 	  Current_Levers = Get_Levers();
 	  
-	  Current_Levers=LeverD;							//For debugging.
+//	  Current_Levers=LeverD;							//For debugging.
 	  
 	  if(Current_Levers == 0xFF){																//Wrong input signal combination detected.
 		  //Turn off all lever and backlight LEDs.
@@ -105,7 +105,7 @@ void main(void)
 		  Set_Output(NIGHT_MODE_DUTY_CYCLE_BACKLIGHT, NIGHT_MODE_DUTY_CYCLE_LEVER, Current_Levers); //Night mode. PWM in MAX.
 	  }else if(PWM_In_Always_Off){															
 		  //PWM_In always 0
-		  Set_Output(50, DAY_MODE_DUTY_CYCLE_LEVER, Current_Levers); 										//Day mode.
+		  Set_Output(0, DAY_MODE_DUTY_CYCLE_LEVER, Current_Levers); 										//Day mode.
 	  }else if(PWM_In_Ready){																
 		  //PWM_In duty measured OK w/o timer overflow
 		  Current_Duty_Cycle = Get_Duty_Cycle();
@@ -176,9 +176,10 @@ void Power_Calibration(void)
 		PC_Temp = 255;
 	}
 	
-	PC_Temp = PC_Temp * PC_Temp;
+//	PC_Temp = PC_Temp * PC_Temp;
 	
-	Compensation_Factor = (byte)(PC_Temp>>8);
+//	Compensation_Factor = (byte)(PC_Temp>>8);
+	Compensation_Factor = (byte)(PC_Temp);
 	
 	return;
 }
