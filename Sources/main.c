@@ -56,9 +56,9 @@ byte Current_Duty_Cycle, Current_Levers;
 byte Levers_Tmp[10]={0};
 byte Levers_Tmp_Ptr=0;
 
-#define DAY_MODE_DUTY_CYCLE_LEVER 150					//Output duty cycle for levers day mode
-#define NIGHT_MODE_DUTY_CYCLE_BACKLIGHT 30				//Output duty cycle for backlight night mode
-#define NIGHT_MODE_DUTY_CYCLE_LEVER 30					//Output duty cycle for levers night mode
+#define DAY_MODE_DUTY_CYCLE_LEVER 200					//Output duty cycle for levers day mode
+#define NIGHT_MODE_DUTY_CYCLE_BACKLIGHT 40				//Output duty cycle for backlight night mode
+#define NIGHT_MODE_DUTY_CYCLE_LEVER 40					//Output duty cycle for levers night mode
 #define DARK_MODE_DUTY_CYCLE 1							//Output duty cycle for dark mode
 
 #define INPUT_V_MIN 95									//Pre-define the A/D result for when input voltage = 8V 
@@ -70,11 +70,21 @@ byte Levers_Tmp_Ptr=0;
 #define IN_D 0b00000011				//3
 #define IN_M 0b00000001				//1
 
+/* Defined by HW schematic. Not aligned with real PCB design.
 #define LeverP 0b10000
 #define LeverR 0b01000
 #define LeverN 0b00100
 #define LeverD 0b00010
 #define LeverM 0b00001
+*/
+
+//Below definitions aligned with real PCB.
+#define LeverP 0b01000
+#define LeverR 0b00001
+#define LeverN 0b00100
+#define LeverD 0b00010
+#define LeverM 0b10000
+
 
 void main(void)
 {
