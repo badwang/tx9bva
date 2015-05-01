@@ -1,7 +1,7 @@
 <GenerationInfo_G_C>
   <Options>
     <ProjectName>TX9BVA</ProjectName>
-    <ProjectDirectory>Z:\Freescale_MCU\MC9RS08\PA4\TX9BVA\</ProjectDirectory>
+    <ProjectDirectory>Z:\D_WZ\Freescale_MCU\MC9RS08\PA4\TX9BVA\</ProjectDirectory>
     <ProjectMainModuleName>main</ProjectMainModuleName>
     <DestEventsDirectory>Sources\</DestEventsDirectory>
     <DestDriversSubDirectory>..\Generated_Code\</DestDriversSubDirectory>

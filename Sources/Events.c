@@ -130,12 +130,14 @@ void PWM_Timer_OnInterrupt(void)
   /* Write your code here ... */
 	
 	if(PWM_Int_Counter >= PWM_Out_Duty_Backlight){
+//	if(PWM_Int_Counter >= 20){
 		Backlight_PutVal(0);
 	}else{
 		Backlight_PutVal(1);
 	}
 
 	if(PWM_Int_Counter >= PWM_Out_Duty_Lever){
+//	if(PWM_Int_Counter >= 30){
 		Lever_Pos_PutVal(0);
 	}else{
 		Lever_Pos_PutVal(PWM_Out_Lever);
